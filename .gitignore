@@ -129,5 +129,6 @@ dmypy.json
 .vscode/
 
 weights/
-test_img/
+# test_img/
 weights.zip
+experiments/
