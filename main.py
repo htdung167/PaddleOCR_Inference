@@ -5,7 +5,7 @@ from PaddleOCR.ppocr_inference import visualize_ocr
 #--Parameters
 use_gpu = False
 
-det_model_dir = r"weights\det\det_r50_db++_icdar15_train_3" # Weights
+det_model_dir = "./weights/det/det_r50_db++_icdar15_train_3" # Weights
 det_db_thresh = 0.5
 det_db_box_thresh = 0.6
 det_algorithm = "DB++"
@@ -13,11 +13,11 @@ det_limit_side_len = 2048
 det_limit_type = "max"
 det_db_score_mode = "slow"
                 
-rec_model_dir = r"weights\rec\r45_abinet_2" # Weights
+rec_model_dir = "./weights/rec/r45_abinet_2" # Weights
 rec_algorithm = "ABINet"
 rec_image_shape = "3,32,128"
 rec_drop_score = 0.001
-rec_char_dict_path = r"PaddleOCR\vi_vietnam_new.txt" # Dictionary
+rec_char_dict_path = "PaddleOCR/vi_vietnam_new.txt" # Dictionary
 rec_use_space_char = True
             
 task="ocr"
@@ -30,7 +30,7 @@ ppocr = PaddleOCR_Inference(
                 task)
 
 #--Inference
-img_path = r"test_img\005.png"
+img_path = "./test_img/005.png"
 
 img = cv.imread(img_path)
 boxes, texts = ppocr(img)
@@ -41,6 +41,6 @@ print(f"Texts:{texts}")
 
 # Save
 name = img_path.rsplit("\\", 1)[-1].rsplit("/", 1)[-1] 
-res = visualize_ocr(img=img, lst_box=boxes, lst_text=texts, font_path="PaddleOCR/font/arial.ttf")
+res = visualize_ocr(img=img, lst_box=boxes, lst_text=texts, font_path="./PaddleOCR/font/arial.ttf")
 cv.imwrite(os.path.join("experiments", name), res)
 
